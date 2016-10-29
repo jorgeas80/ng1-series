@@ -1,0 +1,41 @@
+<p>Series estrenadas hoy: {{ mainctrl.series_today.length }}</p>
+
+<div ng-hide="mainctrl.series_today" class="alert-alert-danger">
+  <strong>No se han podido obtener los capítulos de las series de hoy :-(</strong>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Capítulos de series estrenados el {{ mainctrl.d | date:'dd.MM.yyyy'}} en USA</h3>
+    </div>
+    <div class="panel-body">
+      
+      <table ng-show="mainctrl.series_today" class="table table-condensed table-hover table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Serie</th>
+            <th>Temporada</th>
+            <th>Episodio</th>
+            <th>Duración</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" ng-show="mainctrl.series_today.length == 0" class="alert alert-info">Cargando las series...</td>
+          </tr>
+          <tr ng-repeat="episode in mainctrl.series_today | orderBy: mainctrl.orderBy : mainctrl.reverse">
+            <td>{{ episode.show.name }}</td>
+            <td>{{ episode.season }}</td>
+            <td>{{ episode.number }}</td>
+            <td>{{ episode.show.runtime }}min</td>
+            <td>TODO</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+</div>
+
+</div>
