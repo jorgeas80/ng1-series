@@ -1,5 +1,3 @@
-<p>Series estrenadas hoy: {{ mainctrl.series_today.length }}</p>
-
 <div ng-hide="mainctrl.series_today" class="alert-alert-danger">
   <strong>No se han podido obtener los capítulos de las series de hoy :-(</strong>
 </div>
@@ -25,12 +23,15 @@
           <tr>
             <td colspan="5" ng-show="mainctrl.series_today.length == 0" class="alert alert-info">Cargando las series...</td>
           </tr>
-          <tr ng-repeat="episode in mainctrl.series_today | orderBy: mainctrl.orderBy : mainctrl.reverse">
+          <tr ng-repeat="episode in mainctrl.series_today | filter: mainctrl.searchTerm | orderBy: mainctrl.orderBy : mainctrl.reverse">
             <td>{{ episode.show.name }}</td>
             <td>{{ episode.season }}</td>
             <td>{{ episode.number }}</td>
             <td>{{ episode.show.runtime }}min</td>
-            <td>TODO</td>
+            <td ng-switch="episode.rating.average">
+              <span ng-switch-when="episode.rating.average != null">{{ episode.rating.average }}</span>
+              <span ng-switch-default>No disponible</span>
+            </td>
           </tr>
         </tbody>
       </table>

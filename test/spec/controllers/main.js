@@ -17,7 +17,10 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(MainCtrl.awesomeThings.length).toBe(3);
+  it('Start with default values', function () {
+    var obj = MainCtrl.searchTerm;
+
+    expect(Object.keys(obj).length === 0 && obj.constructor === Object).toBe(true);
+    expect(MainCtrl.d).toBe(Date.now());
   });
 });
