@@ -2,6 +2,23 @@
 
 'use strict';
 
+// Useful function
+Date.prototype.yyyymmdd = function() {
+  var mm = this.getMonth() + 1; // getMonth() is zero-based
+  var dd = this.getDate();
+
+  if(mm < 10)
+    mm = '0' + mm;
+
+  if(dd < 10)
+    dd = '0' + dd;
+
+  return [this.getFullYear(), mm, dd].join('-'); // padding
+};
+
+
+
+
 /**
  * @ngdoc function
  * @name seriesng1App.controller:MainCtrl
@@ -18,32 +35,29 @@ angular.module('seriesng1App')
     vm.series_today = [];
 
 
-    // Pagination stuff
+    ///////////////////////// Pagination stuff
     vm.viewby = 10;
     vm.totalItems = 0;
     vm.currentPage = 1;
     vm.itemsPerPage = vm.viewby;
-
     vm.itemsPerPageOptions = [3, 5, 10, 20, 30, 40, 50];
-
     vm.showPagination = true;
 
+    //////////////////////// Date picker stuff
+    vm.dateOptions = {
+      formatYear: 'yy',
+      maxDate: new Date(2020, 5, 22),
+      startingDay: 1
+    };
 
-    // Get JSON with today releases in USA
-    tvmaze.getTodayReleases().then(
-      // successful
-      function (response) {
-        vm.series_today = response.data;
-        vm.totalItems = response.data.length;
+    vm.dateformat = "yyyy-MM-dd";
 
-        console.log("Hay " + vm.totalItems + " series en la lista");
-      },
+    vm.popup = {
+      opened: false
+    };
 
-      // Error
-      function (response) {
-        vm.series_today = [];
-      }
-    )
+    // Default
+    vm.d = new Date();
 
     vm.pageChanged = function () {
       console.log('Page changed to: ' + vm.currentPage);
@@ -54,11 +68,7 @@ angular.module('seriesng1App')
       vm.currentPage = 1; //reset to first page
     }
 
-
-    // For template
-    vm.d = Date.now();
-
-    // Those are to allow ordering the result table
+    ////////////////////////// Sort table stuff
     vm.orderBy = "show.name";
     vm.reverse = false;
 
@@ -75,4 +85,26 @@ angular.module('seriesng1App')
 
     // Need to explicitly destroy listener
     $scope.$on('$destroy', listener);
+
+    ///////////////////////// Rest of stuff
+
+    // Get JSON with today releases in USA
+    vm.getReleasesOf = function() {
+      vm.series_today = [];
+
+      tvmaze.getReleasesOf(vm.d.yyyymmdd()).then(
+            // successful
+            function (response) {
+              vm.series_today = response.data;
+              vm.totalItems = response.data.length;
+
+              console.log("Hay " + vm.totalItems + " series en la lista");
+            },
+
+            // Error
+            function (response) {
+              vm.series_today = [];
+            }
+          );
+    }
   });

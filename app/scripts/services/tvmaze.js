@@ -12,8 +12,9 @@ angular.module('seriesng1App')
 
     var f = {};
 
-    f.getTodayReleases = function() {
-      return $http.get(url);
+    f.getReleasesOf = function(date) {
+      var fullUrl = url + "&date=" + date;
+      return $http.get(fullUrl);
     }
 
     return f;

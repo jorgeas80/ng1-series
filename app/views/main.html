@@ -3,7 +3,15 @@
 </div>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Capítulos de series estrenados el {{ mainctrl.d | date:'dd.MM.yyyy'}} en USA</h3>
+    <h3 class="panel-title form-inline">Capítulos de series estrenados el 
+        <div class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{mainctrl.dateformat}}" ng-model="mainctrl.d" is-open="mainctrl.popup.opened" datepicker-options="mainctrl.dateOptions" close-text="Close" alt-input-formats="['M!/d!/yyyy']" ng-change="mainctrl.getReleasesOf()"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="mainctrl.popup.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </div> 
+        en USA</h3>
+
   </div>
   <div class="panel-body">
     <table ng-show="mainctrl.series_today" class="table table-condensed table-hover table-striped table-responsive">

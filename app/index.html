@@ -39,7 +39,7 @@
     </header>
 
     <main class="container-fluid">
-      <section ng-include="'views/main.html'" ng-controller="MainCtrl as mainctrl"></section>
+      <section ng-include="'views/main.html'" ng-controller="MainCtrl as mainctrl" ng-init="mainctrl.getReleasesOf()"></section>
     </main>
 
     <footer>

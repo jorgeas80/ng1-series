@@ -5,6 +5,7 @@
   padding: 0.2em 0;
 }
 
+/* My styles */
 body {
   padding: 70px 0;
 }
@@ -12,6 +13,11 @@ body {
 .pagination {
   margin: 0;
 }
+
+h3 .input-group {
+  width: 140px;
+}
+/* End of my styles */
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
