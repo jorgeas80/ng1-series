@@ -23,7 +23,6 @@ angular.module('seriesng1App')
     vm.totalItems = 0;
     vm.currentPage = 1;
     vm.itemsPerPage = vm.viewby;
-    vm.maxSize = 5; //Number of pager buttons to show
 
     vm.itemsPerPageOptions = [3, 5, 10, 20, 30, 40, 50];
 
