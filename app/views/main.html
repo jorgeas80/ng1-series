@@ -20,7 +20,7 @@
         <tr>
           <td colspan="5" ng-show="mainctrl.series_today.length == 0" class="alert alert-info">Cargando las series...</td>
         </tr>
-        <tr ng-repeat="episode in mainctrl.series_today | filter: mainctrl.searchTerm | orderBy: mainctrl.orderBy : mainctrl.reverse | startFrom: ((mainctrl.currentPage-1)*mainctrl.itemsPerPage) | limitTo: ((mainctrl.currentPage)*mainctrl.itemsPerPage)">
+        <tr ng-repeat="episode in mainctrl.series_today | filter: mainctrl.searchTerm | orderBy: mainctrl.orderBy : mainctrl.reverse | startFrom: ((mainctrl.currentPage-1)*mainctrl.itemsPerPage) | limitTo: mainctrl.itemsPerPage">
           <td>{{ episode.show.name }}</td>
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
@@ -33,7 +33,7 @@
       </tbody>
     </table>
   
-    <div class="row">
+    <div class="row" ng-if="mainctrl.showPagination">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
         <ul uib-pagination total-items="mainctrl.totalItems" ng-model="mainctrl.currentPage" ng-change="mainctrl.pageChanged()" class="pagination-sm"
         items-per-page="mainctrl.itemsPerPage"></ul>

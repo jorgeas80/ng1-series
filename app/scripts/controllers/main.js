@@ -27,6 +27,8 @@ angular.module('seriesng1App')
 
     vm.itemsPerPageOptions = [3, 5, 10, 20, 30, 40, 50];
 
+    vm.showPagination = true;
+
 
     // Get JSON with today releases in USA
     tvmaze.getTodayReleases().then(
@@ -34,6 +36,8 @@ angular.module('seriesng1App')
       function (response) {
         vm.series_today = response.data;
         vm.totalItems = response.data.length;
+
+        console.log("Hay " + vm.totalItems + " series en la lista");
       },
 
       // Error
@@ -65,8 +69,11 @@ angular.module('seriesng1App')
     // Listen to menubarctrl, which contains the search term
     var listener = $rootScope.$on('MenubarCtrl:rootScope:emit', function (event, data) {
       vm.searchTerm = data;
+
+      // Disable pagination for searchs. Improvement: also paginate the search results
+      vm.showPagination = vm.searchTerm.show.name.length <= 0;
     });
 
-    // Subscriptions 
+    // Need to explicitly destroy listener
     $scope.$on('$destroy', listener);
   });
