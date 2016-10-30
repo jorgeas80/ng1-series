@@ -28,10 +28,10 @@ describe('Service: tvmaze', function () {
     var returnData = { foo: "bar" };
 
     // expectGET to make sure this is called once.
-    httpBackend.expectGET('http://api.tvmaze.com/schedule?country=US').respond(returnData);
+    httpBackend.expectGET('http://api.tvmaze.com/schedule?country=US&date=2016-10-30').respond(returnData);
 
     // make the call.
-    var returnedPromise = tvmaze.getTodayReleases();
+    var returnedPromise = tvmaze.getReleasesOf("2016-10-30");
 
     // set up a handler for the response, that will put the result
     // into a variable in this scope for you to test.

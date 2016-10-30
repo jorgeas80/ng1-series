@@ -23,6 +23,11 @@ describe('Controller: MainCtrl', function () {
     // After Angular 1.2.5: be sure to use `toEqual` and not `toBe`
     // as the object will be a copy and not the same instance.
     //expect(Object.keys(obj).length === 0 && obj.constructor === Object).toEqual(true);
-    expect(MainCtrl.d).toBe(Date.now());
+    expect(MainCtrl.dateformat).toEqual("yyyy-MM-dd");
+    expect(MainCtrl.d.getDate()).toEqual(new Date().getDate());
+    expect(MainCtrl.popup.opened).toEqual(false);
+    expect(MainCtrl.orderBy).toEqual("show.name");
+    expect(MainCtrl.reverse).toEqual(false);
+    expect(MainCtrl.searchTerm).toEqual({});
   });
 });
