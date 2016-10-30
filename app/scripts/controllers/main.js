@@ -16,12 +16,19 @@ angular.module('seriesng1App')
 
     vm.series_today = [];
 
-    
+    vm.viewby = 10;
+    vm.totalItems = 0;
+    vm.currentPage = 1;
+    vm.itemsPerPage = vm.viewby;
+    vm.maxSize = 5; //Number of pager buttons to show
+
+
     // Get JSON with today releases in USA
     tvmaze.getTodayReleases().then(
       // successful
       function (response) {
         vm.series_today = response.data;
+        vm.totalItems = response.data.length;
       },
 
       // Error
@@ -29,6 +36,15 @@ angular.module('seriesng1App')
         vm.series_today = [];
       }
     )
+
+    vm.pageChanged = function () {
+      console.log('Page changed to: ' + vm.currentPage);
+    };
+
+    vm.setItemsPerPage = function (num) {
+      vm.itemsPerPage = num;
+      vm.currentPage = 1; //reset to first page
+    }
 
 
     // For template
@@ -49,4 +65,3 @@ angular.module('seriesng1App')
     // Subscriptions 
     $scope.$on('$destroy', listener);
   });
-

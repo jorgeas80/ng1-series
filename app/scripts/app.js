@@ -11,5 +11,6 @@
 angular
   .module('seriesng1App', [
     'ngAnimate',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ]);

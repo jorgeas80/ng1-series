@@ -6,7 +6,12 @@
 }
 
 body {
-  padding: 70px 0 0 0;
+  padding: 70px 0;
+}
+
+div.panel-body ul {
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
