@@ -14,13 +14,18 @@ angular.module('seriesng1App')
 
     var vm = this;
 
+    // Will store the array of episodes
     vm.series_today = [];
 
+
+    // Pagination stuff
     vm.viewby = 10;
     vm.totalItems = 0;
     vm.currentPage = 1;
     vm.itemsPerPage = vm.viewby;
     vm.maxSize = 5; //Number of pager buttons to show
+
+    vm.itemsPerPageOptions = [3, 5, 10, 20, 30, 40, 50];
 
 
     // Get JSON with today releases in USA

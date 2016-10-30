@@ -9,9 +9,8 @@ body {
   padding: 70px 0;
 }
 
-div.panel-body ul {
-  margin: 0 auto;
-  width: 100%;
+.pagination {
+  margin: 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
