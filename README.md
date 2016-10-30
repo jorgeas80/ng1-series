@@ -6,7 +6,8 @@ version 0.15.1.
 Note: To properly run tests, need to execute this
 
 ```
-npm install grunt-karma karma karma-phantomjs-launcher karma-jasmine jasmine-core phantomjs-prebuilt --save-dev```
+npm install grunt-karma karma karma-phantomjs-launcher karma-jasmine jasmine-core phantomjs-prebuilt --save-dev
+```
 
 Because of [this bug](https://github.com/yeoman/generator-angular/issues/1230)
 
