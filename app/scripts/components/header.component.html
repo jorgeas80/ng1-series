@@ -1,0 +1,17 @@
+<header>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="MenubarCtrl as menubarctrl">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Series hoy</a>
+        <a class="navbar-brand" href="#">Mis series</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right" role="form">
+          <div class="form-group">
+            <input ng-model="$ctrl.searchTerm.show.name" type="text" placeholder="Busca por título" class="form-control" ng-change="$ctrl.emitSearchTerm()">
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>

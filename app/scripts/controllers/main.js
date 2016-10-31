@@ -18,6 +18,12 @@ angular.module('seriesng1App')
     vm.series_today = [];
 
 
+    ////////////////////////// Init stuff
+    vm.$onInit = function() {
+      vm.getReleasesOf();
+    }
+
+
     ///////////////////////// Pagination stuff
     vm.viewby = 10;
     vm.currentPage = 1;

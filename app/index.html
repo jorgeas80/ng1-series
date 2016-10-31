@@ -21,35 +21,14 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <header>
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="MenubarCtrl as menubarctrl">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                  <a class="navbar-brand" href="#">Series hoy</a>
-                  <a class="navbar-brand" href="#">Mis series</a>
-              </div>
-              <div id="navbar" class="navbar-collapse collapse">
-                  <form class="navbar-form navbar-right" role="form">
-                      <div class="form-group">
-                          <input ng-model="menubarctrl.searchTerm.show.name" type="text" placeholder="Busca por título" class="form-control" ng-change="menubarctrl.emitSearchTerm()">
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </nav>
-    </header>
+    <header-bar></header-bar>
 
     <main class="container-fluid">
-      <section ng-include="'views/main.html'" ng-controller="MainCtrl as mainctrl" ng-init="mainctrl.getReleasesOf()"></section>
+      <main-table></main-table>
+      <!--section ng-include="'views/main.html'" ng-controller="MainCtrl as mainctrl" ng-init="mainctrl.getReleasesOf()"></section-->
     </main>
 
-    <footer>
-      <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="container-fluid">
-          <p class="text-muted">Curso de AngularJS</p>
-        </div>
-      </nav>
-    </footer>
+    <footer-bar></footer-bar>
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -72,6 +51,9 @@
         <script src="scripts/filters/startfrom.js"></script>
         <script src="scripts/directives/extrainfo.js"></script>
         <script src="scripts/components/starrating.js"></script>
+        <script src="scripts/components/header.component.js"></script>
+        <script src="scripts/components/footer.component.js"></script>
+        <script src="scripts/components/main.component.js"></script>
         <!-- endbuild -->
 </body>
 </html>

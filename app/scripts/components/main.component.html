@@ -1,0 +1,76 @@
+<div ng-hide="$ctrl.series_today" class="alert-alert-danger">
+  <strong>No se han podido obtener los capítulos de las series de hoy :-(</strong>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title form-inline">Capítulos de series estrenados el 
+        <div class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.dateformat}}" ng-model="$ctrl.d" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions" close-text="Close" alt-input-formats="['M!/d!/yyyy']" ng-change="$ctrl.getReleasesOf()"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="$ctrl.popup.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </div> 
+        en USA</h3>
+
+  </div>
+  <div class="panel-body">
+    <table ng-show="$ctrl.series_today" class="table table-condensed table-hover table-striped table-responsive">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>
+            <a ng-click="$ctrl.setOrder('show.name')">Serie</a>
+            <span ng-show="$ctrl.orderBy == 'show.name' && !$ctrl.reverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="$ctrl.orderBy == 'show.name' && $ctrl.reverse" class="glyphicon glyphicon-chevron-down"></span>
+          </th>
+          <th>Temporada</th>
+          <th>Episodio</th>
+          <th>Duración</th>
+          <th>
+            <a ng-click="$ctrl.setOrder($ctrl.seriesFilterFnByRating)">Rating</a>
+            <span ng-show="typeof($ctrl.orderBy) === 'function' && !$ctrl.reverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="typeof($ctrl.orderBy) === 'function' && $ctrl.reverse" class="glyphicon glyphicon-chevron-down"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="5" ng-show="$ctrl.series_today.length == 0" class="alert alert-info">Cargando las series...</td>
+        </tr>
+        <tr ng-repeat="episode in $ctrl.series_today | filter: $ctrl.searchTerm | orderBy: $ctrl.orderBy : $ctrl.reverse | startFrom: (($ctrl.currentPage-1)*$ctrl.itemsPerPage) | limitTo: $ctrl.itemsPerPage">
+          <td ng-switch="!!episode.show.image.medium">
+            <span ng-switch-when="true"><img src="{{episode.show.image.medium}}" alt="Logo de la serie">
+            <span ng-switch-when="false"><img src="https://placekitten.com/210/295" alt="Gatete"></span>
+          </td> 
+          <!--td class="alert alert-success" data-toggle="tooltip" title="PENE">{{ episode.show.name }}</td-->
+          <td extra-info data-status="{{episode.show.status}}" data-summary="{{episode.show.summary}}">{{ episode.show.name }}</td>
+
+          <td>{{ episode.season }}</td>
+          <td>{{ episode.number }}</td>
+          <td>{{ episode.show.runtime }}min</td>
+          <td><star-rating r="episode.show.rating.average"></star-rating></td>
+
+          <!--td ng-switch="!!episode.show.rating.average">
+            <span ng-switch-when="true">{{ episode.show.rating.average }}</span>
+            <span ng-switch-when="false">No disponible</span>
+          </td-->
+
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="row" ng-if="$ctrl.showPagination">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <ul uib-pagination total-items="$ctrl.series_today.length" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()" class="pagination-sm"
+        items-per-page="$ctrl.itemsPerPage"></ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel-footer">
+    <div class="text-right">
+      Mostrar <select ng-model="$ctrl.viewby" ng-change="$ctrl.setItemsPerPage($ctrl.viewby)" ng-options="v for v in $ctrl.itemsPerPageOptions"></select> elementos por página.
+    </div>
+  </div>
+</div>
