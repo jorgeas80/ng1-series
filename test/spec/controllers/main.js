@@ -60,4 +60,20 @@ describe('Controller: MainCtrl', function () {
     // Assert expected result
     expect(MainCtrl.series_today).toEqual([1, 2, 3]);    
   });
+
+
+  it('MainCtrl correctly receives data emited from rootScope', function() {
+    // Emit message
+    var value = {
+      show: {
+        name: "foo"
+      }
+    };
+    
+    rootScope.$emit('MenubarCtrl:rootScope:emit', value);
+
+    // Check expected values in MainCtrl
+    expect(MainCtrl.searchTerm).toEqual(value);
+    expect(MainCtrl.showPagination).toEqual(false);
+  });
 });
