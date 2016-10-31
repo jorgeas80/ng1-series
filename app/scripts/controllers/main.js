@@ -54,6 +54,17 @@ angular.module('seriesng1App')
     vm.orderBy = "show.name";
     vm.reverse = false;
 
+    vm.setOrder = function(orderby) {
+      if (orderby === vm.orderBy) {
+        vm.reverse = !vm.reverse;
+      }
+      vm.orderBy = orderby;
+    }
+
+    vm.seriesFilterFnByRating = function(serie) {
+      return (!serie.show.rating.average) ? 0 : parseFloat(serie.show.rating.average);
+    }
+
     // This is to filter the search table
     vm.searchTerm = {};
 

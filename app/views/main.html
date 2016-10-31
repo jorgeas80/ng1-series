@@ -18,11 +18,19 @@
       <thead>
         <tr>
           <th>Imagen</th>
-          <th>Serie</th>
+          <th>
+            <a ng-click="mainctrl.setOrder('show.name')">Serie</a>
+            <span ng-show="mainctrl.orderBy == 'show.name' && !mainctrl.reverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="mainctrl.orderBy == 'show.name' && mainctrl.reverse" class="glyphicon glyphicon-chevron-down"></span>
+          </th>
           <th>Temporada</th>
           <th>Episodio</th>
           <th>Duración</th>
-          <th>Rating</th>
+          <th>
+            <a ng-click="mainctrl.setOrder(mainctrl.seriesFilterFnByRating)">Rating</a>
+            <span ng-show="typeof(mainctrl.orderBy) === 'function' && !mainctrl.reverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="typeof(mainctrl.orderBy) === 'function' && mainctrl.reverse" class="glyphicon glyphicon-chevron-down"></span>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +54,7 @@
             <span ng-switch-when="true">{{ episode.show.rating.average }}</span>
             <span ng-switch-when="false">No disponible</span>
           </td-->
+
         </tr>
       </tbody>
     </table>

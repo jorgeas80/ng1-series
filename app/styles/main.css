@@ -38,6 +38,10 @@ input.form-control {
   text-align: center;
 }
 
+.table > thead > tr > th > a {
+  cursor: pointer;
+}
+
 .table > tbody > tr > td > span > img {
   /* Maximum size to original img dimensions / 2. The browser will take care of the size, keeping the aspect ratio */
   max-width: 105px;
