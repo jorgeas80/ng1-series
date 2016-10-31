@@ -27,11 +27,25 @@ describe('Service: tvmaze', function () {
     // As we are NOT doing a real HTTP request, just define some fake response data
     var returnData = { foo: "bar" };
 
+    var date = new Date();
+
+    // Get str representation of date
+    var mm = date.getMonth() + 1; // getMonth() is zero-based
+    var dd = date.getDate();
+
+    if (mm < 10)
+      mm = '0' + mm;
+
+    if (dd < 10)
+      dd = '0' + dd;
+
+    var strDate = [date.getFullYear(), mm, dd].join('-');
+
     // expectGET to make sure this is called once.
-    httpBackend.expectGET('http://api.tvmaze.com/schedule?country=US&date=2016-10-30').respond(returnData);
+    httpBackend.expectGET('http://api.tvmaze.com/schedule?country=US&date=' + strDate).respond(returnData);
 
     // make the call.
-    var returnedPromise = tvmaze.getReleasesOf("2016-10-30");
+    var returnedPromise = tvmaze.getReleasesOf(new Date());
 
     // set up a handler for the response, that will put the result
     // into a variable in this scope for you to test.

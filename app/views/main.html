@@ -43,7 +43,7 @@
   
     <div class="row" ng-if="mainctrl.showPagination">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-        <ul uib-pagination total-items="mainctrl.totalItems" ng-model="mainctrl.currentPage" ng-change="mainctrl.pageChanged()" class="pagination-sm"
+        <ul uib-pagination total-items="mainctrl.series_today.length" ng-model="mainctrl.currentPage" ng-change="mainctrl.pageChanged()" class="pagination-sm"
         items-per-page="mainctrl.itemsPerPage"></ul>
       </div>
     </div>

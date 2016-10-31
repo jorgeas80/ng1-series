@@ -2,23 +2,6 @@
 
 'use strict';
 
-// Useful function
-Date.prototype.yyyymmdd = function() {
-  var mm = this.getMonth() + 1; // getMonth() is zero-based
-  var dd = this.getDate();
-
-  if(mm < 10)
-    mm = '0' + mm;
-
-  if(dd < 10)
-    dd = '0' + dd;
-
-  return [this.getFullYear(), mm, dd].join('-'); // padding
-};
-
-
-
-
 /**
  * @ngdoc function
  * @name seriesng1App.controller:MainCtrl
@@ -37,7 +20,6 @@ angular.module('seriesng1App')
 
     ///////////////////////// Pagination stuff
     vm.viewby = 10;
-    vm.totalItems = 0;
     vm.currentPage = 1;
     vm.itemsPerPage = vm.viewby;
     vm.itemsPerPageOptions = [3, 5, 10, 20, 30, 40, 50];
@@ -92,13 +74,10 @@ angular.module('seriesng1App')
     vm.getReleasesOf = function() {
       vm.series_today = [];
 
-      tvmaze.getReleasesOf(vm.d.yyyymmdd()).then(
+      tvmaze.getReleasesOf(vm.d).then(
             // successful
             function (response) {
               vm.series_today = response.data;
-              vm.totalItems = response.data.length;
-
-              console.log("Hay " + vm.totalItems + " series en la lista");
             },
 
             // Error
