@@ -40,10 +40,12 @@
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
           <td>{{ episode.show.runtime }}min</td>
-          <td ng-switch="!!episode.show.rating.average">
+          <td><star-rating r="episode.show.rating.average"></star-rating></td>
+
+          <!--td ng-switch="!!episode.show.rating.average">
             <span ng-switch-when="true">{{ episode.show.rating.average }}</span>
             <span ng-switch-when="false">No disponible</span>
-          </td>
+          </td-->
         </tr>
       </tbody>
     </table>

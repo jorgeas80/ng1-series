@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc directive
- * @name seriesng1App.directive:starrating
+ * @name seriesng1App.directive:extrainfo
  * @description
- * # starrating
+ * # extrainfo
  */
 angular.module('seriesng1App')
   .directive('extraInfo', function () {
@@ -25,10 +25,6 @@ angular.module('seriesng1App')
             element.addClass("alert alert-danger");
             break;
         };
-
-        console.log(scope);
-        console.log(element);
-        console.log(attrs);
       }
     };
   });

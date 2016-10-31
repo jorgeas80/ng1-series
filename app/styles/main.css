@@ -57,6 +57,23 @@ div.panel-footer > div.text-right {
   font-size: 1.5em;
 }
 
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.star-rating .star {
+  padding: 1px;
+  color: #15880f;
+  font-size: 20px;
+  text-shadow: .05em .05em #aaa;
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+
 /* End of my styles */
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
