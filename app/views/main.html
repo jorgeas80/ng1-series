@@ -17,6 +17,7 @@
     <table ng-show="mainctrl.series_today" class="table table-condensed table-hover table-striped table-responsive">
       <thead>
         <tr>
+          <th>Imagen</th>
           <th>Serie</th>
           <th>Temporada</th>
           <th>Episodio</th>
@@ -29,7 +30,13 @@
           <td colspan="5" ng-show="mainctrl.series_today.length == 0" class="alert alert-info">Cargando las series...</td>
         </tr>
         <tr ng-repeat="episode in mainctrl.series_today | filter: mainctrl.searchTerm | orderBy: mainctrl.orderBy : mainctrl.reverse | startFrom: ((mainctrl.currentPage-1)*mainctrl.itemsPerPage) | limitTo: mainctrl.itemsPerPage">
-          <td>{{ episode.show.name }}</td>
+          <td ng-switch="!!episode.show.image.medium">
+            <span ng-switch-when="true"><img src="{{episode.show.image.medium}}" alt="Logo de la serie">
+            <span ng-switch-when="false"><img src="https://placekitten.com/210/295" alt="Gatete"></span>
+          </td> 
+          <!--td class="alert alert-success" data-toggle="tooltip" title="PENE">{{ episode.show.name }}</td-->
+          <td extra-info data-status="{{episode.show.status}}" data-summary="{{episode.show.summary}}">{{ episode.show.name }}</td>
+
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
           <td>{{ episode.show.runtime }}min</td>
