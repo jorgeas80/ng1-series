@@ -9,7 +9,7 @@
 angular.module('seriesng1App')
   .component('starRating', {
       bindings: {
-        r: '@'
+        r: '<'
       },
 
       template: [
