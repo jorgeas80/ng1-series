@@ -12,12 +12,13 @@ describe('Directive: starrating', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    /*
-    element = angular.element('<starrating></starrating>');
+  it('should add the correct class to the DOM element', inject(function ($compile) {
+    
+    element = angular.element('<div extra-info data-status="Running">Foo</div>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the starrating directive');
-    */
+
+    expect(element.hasClass("alert-success")).toEqual(true);
+    
     // TODO: Write real text here
     expect(true).toEqual(true);
   }));
