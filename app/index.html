@@ -24,7 +24,8 @@
     <header-bar></header-bar>
 
     <main class="container-fluid">
-      <main-table></main-table>
+      <section ng-view></section>
+      <!--main-table></main-table-->
       <!--section ng-include="'views/main.html'" ng-controller="MainCtrl as mainctrl" ng-init="mainctrl.getReleasesOf()"></section-->
     </main>
 
@@ -36,9 +37,10 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/satellizer/dist/satellizer.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -54,6 +56,13 @@
         <script src="scripts/components/header.component.js"></script>
         <script src="scripts/components/footer.component.js"></script>
         <script src="scripts/components/main.component.js"></script>
+        <script src="scripts/components/myseries.component.js"></script>
+        <script src="scripts/controllers/signupcontroller.js"></script>
+        <script src="scripts/controllers/logincontroller.js"></script>
+        <script src="scripts/controllers/logoutcontroller.js"></script>
+        <script src="scripts/controllers/myseries.js"></script>
+        <script src="scripts/services/dburl.js"></script>
+        <script src="scripts/filters/inmyseries.js"></script>
         <!-- endbuild -->
 </body>
 </html>

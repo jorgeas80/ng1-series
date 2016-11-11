@@ -31,6 +31,7 @@
             <span ng-show="typeof($ctrl.orderBy) === 'function' && !$ctrl.reverse" class="glyphicon glyphicon-chevron-up"></span>
             <span ng-show="typeof($ctrl.orderBy) === 'function' && $ctrl.reverse" class="glyphicon glyphicon-chevron-down"></span>
           </th>
+          <th>Mis series</th>
         </tr>
       </thead>
       <tbody>
@@ -49,12 +50,7 @@
           <td>{{ episode.number }}</td>
           <td>{{ episode.show.runtime }}min</td>
           <td><star-rating r="episode.show.rating.average"></star-rating></td>
-
-          <!--td ng-switch="!!episode.show.rating.average">
-            <span ng-switch-when="true">{{ episode.show.rating.average }}</span>
-            <span ng-switch-when="false">No disponible</span>
-          </td-->
-
+          <td><in-my-series id="{{episode.show.id}}"></in-my-series></td>  
         </tr>
       </tbody>
     </table>

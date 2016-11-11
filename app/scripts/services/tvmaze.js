@@ -8,7 +8,7 @@
  * Service in the seriesng1App.
  */
 angular.module('seriesng1App')
-  .factory('tvmaze', function ($http, url) {
+  .factory('tvmaze', function ($http, url, dburl) {
 
     var f = {};
 
@@ -28,6 +28,14 @@ angular.module('seriesng1App')
 
       var fullUrl = url + "&date=" + strDate;
       return $http.get(fullUrl);
+    }
+
+    f.addSeries = function (id, title, rating, img_url) {
+
+    }
+
+    f.getSeries = function(id) {
+      return $http.get(dburl + "/" + id);
     }
 
     return f;

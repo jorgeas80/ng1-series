@@ -102,5 +102,5 @@ angular.module('seriesng1App')
               vm.series_today = [];
             }
           );
-    }
+    } 
   });

@@ -1,0 +1,19 @@
+{
+  "series": [
+    {
+      "id": 9311,
+      "title": "All In with Chris Hayes",
+      "img_url": "http://tvmazecdn.com/uploads/images/medium_portrait/32/81912.jpg",
+      "rating": "10"
+    },
+    {
+      "id": 9312,
+      "title": "All In with Chris Hayes",
+      "img_url": "http://tvmazecdn.com/uploads/images/medium_portrait/32/81912.jpg",
+      "rating": 10
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
